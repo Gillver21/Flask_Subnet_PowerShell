@@ -1122,7 +1122,8 @@ def deobfuscate_powershell_base64(test_string):
 #Using Python's Flask library, the decorator along with the function definition make a single code block -- if not together an error will occur
 @app.route('/ip_subnet/<string:ip>', methods=['POST'], defaults={"subnet_mask":"8"})
 @app.route('/ip_subnet/<string:ip>/', methods=['POST'], defaults={"subnet_mask":"8"})
-@app.route('/ip_subnet/<string:ip>/<path:subnet_mask>', methods=['POST'], defaults={"subnet_mask":"8"})
+@app.route('/ip_subnet/<string:ip>/<path:subnet_mask>', methods=['POST'])
+@app.route('/ip_subnet/<string:ip>/<path:subnet_mask>/', methods=['POST'])
 def return_subnetted_ip(ip,subnet_mask):
 		
 	if str(subnet_mask).isdigit() == True:
