@@ -978,7 +978,7 @@ class return_subnet_table:
 def deobfuscate_powershell_base64(test_string):
 	response = ''
 	import re
-	global single_long_bit_array_string, second_iter_binary_array, deobfuscated_character_array, deobfuscated_string, ps1_strings_array_init, ps1_strings_array_total, test_ps1_substitute_array_format. response
+	global single_long_bit_array_string, second_iter_binary_array, deobfuscated_character_array, deobfuscated_string, ps1_strings_array_init, ps1_strings_array_total, test_ps1_substitute_array_format, response
 	first_iter_binary_array = []
 	single_long_bit_array_string = ''
 	second_iter_binary_array = []
