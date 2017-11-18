@@ -1126,11 +1126,11 @@ def deobfuscate_powershell_base64(test_string):
 @app.route('/ip_subnet/<string:ip>/<path:subnet_mask>', methods=['POST'])
 def return_subnetted_ip(ip,subnet_mask):
 		
-	if str(subnet_mask).isdigit() == True:
-		subnet_mask = '/'+str(subnet_mask)
-		
 	if str(subnet_mask)[-1] == '/':
 		subnet_mask = str(subnet_mask)[:-1]
+		
+	if str(subnet_mask).isdigit() == True:
+		subnet_mask = '/'+str(subnet_mask)
 	
 	response = return_subnet_table().ip_input(ip, str(subnet_mask).replace('"',''))
 	return response
