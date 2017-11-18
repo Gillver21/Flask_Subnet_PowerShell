@@ -1145,4 +1145,4 @@ def powershell_deobfuscator(powershell_string):
 	
 #Running app instance of Flask with Debugging if there is an error
 #When the run method of the object of the Flask class is called, it automatically executes functions decorated with the object name
-app.run(host='0.0.0.0', debug=True, port=5000)
+app.run(host='0.0.0.0', debug=True, port=****)
