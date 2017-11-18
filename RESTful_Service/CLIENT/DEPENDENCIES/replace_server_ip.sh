@@ -30,3 +30,4 @@ find .. -name "*.sh" -exec chmod a+x {} +
 #Run Test Case
 cd ../RUN_TEST_CASES/dynamic/
 ./dynamic.sh
+read
