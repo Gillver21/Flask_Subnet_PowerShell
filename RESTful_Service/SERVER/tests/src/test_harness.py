@@ -362,8 +362,6 @@ class return_subnet_table:
 							if i == subnet_network_row:
 								matchArr.append(result_changing_octets_for_ip)
 				if octets_for_subnet_mask[2] == '254':
-					#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-					#return_subnet_table.ip_input()
 					#return_subnet_table.print_net_use_broad()
 					response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
 					for i in range(0,256,2):
@@ -727,8 +725,6 @@ class return_subnet_table:
 					response += '  '+result_changing_octets_for_ip+'\n'
 					if i == subnet_network_row:
 						matchArr.append(result_changing_octets_for_ip)
-				#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-				#ipInput()
 			if octets_for_subnet_mask[1] == '252':
 				#return_subnet_table.print_net_use_broad()
 				response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
@@ -1036,11 +1032,8 @@ class return_subnet_table:
 					#print('  ', result_changing_octets_for_ip)
 					response += '  '+result_changing_octets_for_ip+'\n'
 					if i == subnet_network_row:
-						matchArr.append(result_changing_octets_for_ip)
-		
+						matchArr.append(result_changing_octets_for_ip)		
 		if octets_for_subnet_mask[0] == '254':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
 			#return_subnet_table.print_net_use_broad()
 			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
 			for i in range(0,256,2):
@@ -1089,8 +1082,6 @@ class return_subnet_table:
 				if i == subnet_network_row:
 					matchArr.append(result_changing_octets_for_ip)
 		if octets_for_subnet_mask[0] == '252':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
 			#return_subnet_table.print_net_use_broad()
 			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
 			for i in range(0,256,4):
@@ -1139,8 +1130,6 @@ class return_subnet_table:
 				if i == subnet_network_row:
 					matchArr.append(result_changing_octets_for_ip)
 		if octets_for_subnet_mask[0] == '248':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
 			#return_subnet_table.print_net_use_broad()
 			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
 			for i in range(0,256,8):
@@ -1189,8 +1178,6 @@ class return_subnet_table:
 				if i == subnet_network_row:
 					matchArr.append(result_changing_octets_for_ip)
 		if octets_for_subnet_mask[0] == '240':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
 			#return_subnet_table.print_net_use_broad()
 			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
 			for i in range(0,256,16):
@@ -1239,8 +1226,6 @@ class return_subnet_table:
 				if i == subnet_network_row:
 					matchArr.append(result_changing_octets_for_ip)
 		if octets_for_subnet_mask[0] == '224':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
 			#return_subnet_table.print_net_use_broad()
 			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
 			for i in range(0,256,32):
@@ -1289,8 +1274,6 @@ class return_subnet_table:
 				if i == subnet_network_row:
 					matchArr.append(result_changing_octets_for_ip)
 		if octets_for_subnet_mask[0] == '192':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
 			#return_subnet_table.print_net_use_broad()
 			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
 			for i in range(0,256,64):
@@ -1339,8 +1322,6 @@ class return_subnet_table:
 				if i == subnet_network_row:
 					matchArr.append(result_changing_octets_for_ip)
 		if octets_for_subnet_mask[0] == '128':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
 			#return_subnet_table.print_net_use_broad()
 			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
 			for i in range(0,256,128):
@@ -1389,8 +1370,6 @@ class return_subnet_table:
 				if i == subnet_network_row:
 					matchArr.append(result_changing_octets_for_ip)
 		if octets_for_subnet_mask[0] == '0':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
 			#return_subnet_table.print_net_use_broad()
 			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
 			for i in range(0,256,256):
