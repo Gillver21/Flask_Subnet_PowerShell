@@ -67,23 +67,21 @@ class return_subnet_table:
 		CIDRS = ['/0', '/1', '/2', '/3', '/4', '/5', '/6', '/7', '/8', '/8', '/9', '/10', '/11', '/12', '/13', '/14', '/15', '/16', '/17', '/18', '/19', '/20', '/21', '/22', '/23', '/24', '/25', '/26', '/27', '/28', '/29', '/30', '/31', '/32']
 		MASKS = ['0.0.0.0', '128.0.0.0', '192.0.0.0', '224.0.0.0', '240.0.0.0', '248.0.0.0', '252.0.0.0', '254.0.0.0', '255.0.0.0', '255.128.0.0', '255.192.0.0', '255.224.0.0', '255.240.0.0', '255.248.0.0', '255.252.0.0', '255.254.0.0', '255.255.0.0', '255.255.128.0', '255.255.192.0', '255.255.224.0', '255.255.240.0', '255.255.248.0', '255.255.252.0', '255.255.254.0', '255.255.255.0', '255.255.255.128', '255.255.255.192', '255.255.255.224', '255.255.255.240', '255.255.255.248', '255.255.255.252', '255.255.255.254', '255.255.255.255']
 		USABLES = [str((2**(32-0))-2), str((2**(32-1))-2), str((2**(32-2))-2), str((2**(32-3))-2), str((2**(32-4))-2), str((2**(32-5))-2), str((2**(32-6))-2), str((2**(32-7))-2), str((2**(32-8))-2), str((2**(32-9))-2), str((2**(32-10))-2), str((2**(32-11))-2), str((2**(32-12))-2), str((2**(32-13))-2), str((2**(32-14))-2), str((2**(32-15))-2), str((2**(32-16))-2), str((2**(32-17))-2), str((2**(32-18))-2), str((2**(32-19))-2), str((2**(32-20))-2), str((2**(32-21))-2), str((2**(32-22))-2), str((2**(32-23))-2), str((2**(32-24))-2), str((2**(32-25))-2), str((2**(32-26))-2), str((2**(32-27))-2), str((2**(32-28))-2), str((2**(32-29))-2), str((2**(32-30))-2), str((2**(32-31))-2), str((2**(32-32))-2)]
-		#entered_ip_address = input('What IP address would you like to subnet?')
 		entered_ip_address = ip
+		#entered_ip_address = input('What IP address would you like to subnet?')
 		octets_for_entered_ip = entered_ip_address.split('.')
 		changing_octets_for_ip = entered_ip_address.split('.')
 		if ((int(octets_for_entered_ip[0]) > 255) or (int(octets_for_entered_ip[0]) < 0) or (int(octets_for_entered_ip[1]) > 255) or (int(octets_for_entered_ip[1]) < 0) or (int(octets_for_entered_ip[2]) > 255) or (int(octets_for_entered_ip[2]) < 0) or (int(octets_for_entered_ip[3]) > 252) or (int(octets_for_entered_ip[3]) < 0) or (octets_for_entered_ip[0].isdigit() == False) or (octets_for_entered_ip[1].isdigit() == False) or (octets_for_entered_ip[2].isdigit() == False) or (octets_for_entered_ip[3].isdigit() == False)):
 			#print('Error. Invalid Input\n\nReturning to Start...')
-			response = 'Error. Invalid IP Address...'
-			return response
+			response = 'Error. Invalid Input...'
 			#return_subnet_table.ip_input()
-		#entered_cidr_or_mask = input('What subnet mask or CIDR would you like?')
 		entered_cidr_or_mask = subnet_mask
+		#entered_cidr_or_mask = input('What subnet mask or CIDR would you like?')
 		if entered_cidr_or_mask[0] == '/' and entered_cidr_or_mask not in CIDRS:
 			ip_in_incorrect_format = entered_cidr_or_mask
 			entered_cidr_or_mask = ''
 			#print('Error. Invalid Input\n\nReturning to Start...')
-			response = 'Error. Invalid CIDR...'
-			return response
+			response = 'Error. Invalid Input...'
 			#return_subnet_table.ip_input()
 		if entered_cidr_or_mask in CIDRS or entered_cidr_or_mask in MASKS:
 			for i in range(len(CIDRS)):
@@ -96,13 +94,13 @@ class return_subnet_table:
 		octets_for_subnet_mask = entered_cidr_or_mask.split('.')
 		if ((int(octets_for_subnet_mask[0]) > 255) or (int(octets_for_subnet_mask[0]) < 0) or (int(octets_for_subnet_mask[1]) > 255) or (int(octets_for_subnet_mask[1]) < 0) or (int(octets_for_subnet_mask[2]) > 255) or (int(octets_for_subnet_mask[2]) < 0) or (int(octets_for_subnet_mask[3]) > 252) or (int(octets_for_subnet_mask[3]) < 0) or (octets_for_subnet_mask[0].isdigit() == False) or (octets_for_subnet_mask[1].isdigit() == False) or (octets_for_subnet_mask[2].isdigit() == False) or (octets_for_subnet_mask[3].isdigit() == False)):
 			#print('Error. Invalid Input\n\nReturning to Start...')
-			response = 'Error. Invalid Subnet Mask...'
-			return response
+			response = 'Error. Invalid Input...'
 			#return_subnet_table.ip_input()
-		if octets_for_subnet_mask[0] == '255':
+		if octets_for_subnet_mask[0] != '255':
 			#print('Error. Invalid Input\n\nReturning to Start...')
 			response = 'Error. Invalid Input...'
 			#return_subnet_table.ip_input()
+		if octets_for_subnet_mask[0] == '255':
 			if octets_for_subnet_mask[1] == '255':
 				if octets_for_subnet_mask[2] == '255':
 					if octets_for_subnet_mask[3] == '254' or int(octets_for_subnet_mask[3]) > 254:
@@ -361,48 +359,9 @@ class return_subnet_table:
 							response += '  '+result_changing_octets_for_ip+'\n'
 							if i == subnet_network_row:
 								matchArr.append(result_changing_octets_for_ip)
-				if octets_for_subnet_mask[2] == '254':
+				if octets_for_subnet_mask[2] == '254' or int(octets_for_subnet_mask[3]) > 254:
 					#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-					#return_subnet_table.ip_input()
-					#return_subnet_table.print_net_use_broad()
-					response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
-					for i in range(0,256,2):
-						netArr.append(i)
-						use1Arr.append(i)
-						use2Arr.append(i+1)
-						broadArr.append(i+1)
-						row_count += 1
-						if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+3) <= 0)):
-							subnet_network_row = row_count
-					for i in range(len(netArr)):
-						changing_octets_for_ip[2] = str(netArr[i])
-						changing_octets_for_ip[3] = str(0)
-						result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-						#print(i, ' | ', result_changing_octets_for_ip, end=' \t| ')
-						response += str(i)+' | '+result_changing_octets_for_ip+' \t| '
-						if i == subnet_network_row:
-							matchArr.append(result_changing_octets_for_ip)
-						changing_octets_for_ip[2] = str(use1Arr[i])
-						changing_octets_for_ip[3] = str(1)
-						result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-						#print(' ', result_changing_octets_for_ip, end=' - ')
-						response += ' '+result_changing_octets_for_ip+' - '
-						if i == subnet_network_row:
-							matchArr.append(result_changing_octets_for_ip)
-						changing_octets_for_ip[2] = str(use2Arr[i])
-						changing_octets_for_ip[3] = str(254)
-						result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-						#print(result_changing_octets_for_ip, end='  \t| ')
-						response += result_changing_octets_for_ip+'  \t| '
-						if i == subnet_network_row:
-							matchArr.append(result_changing_octets_for_ip)
-						changing_octets_for_ip[2] = str(broadArr[i])
-						changing_octets_for_ip[3] = str(255)
-						result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-						#print('  ', result_changing_octets_for_ip)
-						response += '  '+result_changing_octets_for_ip+'\n'
-						if i == subnet_network_row:
-							matchArr.append(result_changing_octets_for_ip)
+					return_subnet_table.ip_input()
 				if octets_for_subnet_mask[2] == '252':
 					#return_subnet_table.print_net_use_broad()
 					response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
@@ -683,52 +642,9 @@ class return_subnet_table:
 						response += '  '+result_changing_octets_for_ip+'\n'
 						if i == subnet_network_row:
 							matchArr.append(result_changing_octets_for_ip)
-			if octets_for_subnet_mask[1] == '254':
-				#return_subnet_table.print_net_use_broad()
-				response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
-				for i in range(0,256,2):
-					netArr.append(i)
-					use1Arr.append(i)
-					use2Arr.append(i+1)
-					broadArr.append(i+1)
-					row_count += 1
-					if (((int(octets_for_entered_ip[1])) - i >= 0)  and ((int(octets_for_entered_ip[1])) - (i+3) <= 0)):
-						subnet_network_row = row_count
-				for i in range(len(netArr)):
-					changing_octets_for_ip[1] = str(netArr[i])
-					changing_octets_for_ip[2] = str(0)
-					changing_octets_for_ip[3] = str(0)
-					result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-					#print(i, ' | ', result_changing_octets_for_ip, end=' \t| ')
-					response += str(i)+' | '+result_changing_octets_for_ip+' \t| '
-					if i == subnet_network_row:
-						matchArr.append(result_changing_octets_for_ip)
-					changing_octets_for_ip[1] = str(use1Arr[i])
-					changing_octets_for_ip[2] = str(0)
-					changing_octets_for_ip[3] = str(1)
-					result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-					#print(' ', result_changing_octets_for_ip, end=' - ')
-					response += ' '+result_changing_octets_for_ip+' - '
-					if i == subnet_network_row:
-						matchArr.append(result_changing_octets_for_ip)
-					changing_octets_for_ip[1] = str(use2Arr[i])
-					changing_octets_for_ip[2] = str(255)
-					changing_octets_for_ip[3] = str(254)
-					result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-					#print(result_changing_octets_for_ip, end='  \t| ')
-					response += result_changing_octets_for_ip+'  \t| '
-					if i == subnet_network_row:
-						matchArr.append(result_changing_octets_for_ip)
-					changing_octets_for_ip[1] = str(broadArr[i])
-					changing_octets_for_ip[2] = str(255)
-					changing_octets_for_ip[3] = str(255)
-					result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-					#print('  ', result_changing_octets_for_ip)
-					response += '  '+result_changing_octets_for_ip+'\n'
-					if i == subnet_network_row:
-						matchArr.append(result_changing_octets_for_ip)
+			if octets_for_subnet_mask[1] == '254' or int(octets_for_subnet_mask[3]) > 254:
 				#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-				#ipInput()
+				ipInput()
 			if octets_for_subnet_mask[1] == '252':
 				#return_subnet_table.print_net_use_broad()
 				response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
@@ -1037,408 +953,6 @@ class return_subnet_table:
 					response += '  '+result_changing_octets_for_ip+'\n'
 					if i == subnet_network_row:
 						matchArr.append(result_changing_octets_for_ip)
-		
-		if octets_for_subnet_mask[0] == '254':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
-			#return_subnet_table.print_net_use_broad()
-			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
-			for i in range(0,256,2):
-				netArr.append(i)
-				use1Arr.append(i)
-				use2Arr.append(i+1)
-				broadArr.append(i+1)
-				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+3) <= 0)):
-					subnet_network_row = row_count
-			for i in range(len(netArr)):
-				changing_octets_for_ip[0] = str(netArr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(0)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(i, ' | ', result_changing_octets_for_ip, end=' \t| ')
-				response += str(i)+' | '+result_changing_octets_for_ip+' \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use1Arr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(1)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(' ', result_changing_octets_for_ip, end=' - ')
-				response += ' '+result_changing_octets_for_ip+' - '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use2Arr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(254)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(result_changing_octets_for_ip, end='  \t| ')
-				response += result_changing_octets_for_ip+'  \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(broadArr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(255)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print('  ', result_changing_octets_for_ip)
-				response += '  '+result_changing_octets_for_ip+'\n'
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-		if octets_for_subnet_mask[0] == '252':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
-			#return_subnet_table.print_net_use_broad()
-			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
-			for i in range(0,256,4):
-				netArr.append(i)
-				use1Arr.append(i)
-				use2Arr.append(i+3)
-				broadArr.append(i+3)
-				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+3) <= 0)):
-					subnet_network_row = row_count
-			for i in range(len(netArr)):
-				changing_octets_for_ip[0] = str(netArr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(0)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(i, ' | ', result_changing_octets_for_ip, end=' \t| ')
-				response += str(i)+' | '+result_changing_octets_for_ip+' \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use1Arr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(1)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(' ', result_changing_octets_for_ip, end=' - ')
-				response += ' '+result_changing_octets_for_ip+' - '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use2Arr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(254)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(result_changing_octets_for_ip, end='  \t| ')
-				response += result_changing_octets_for_ip+'  \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(broadArr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(255)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print('  ', result_changing_octets_for_ip)
-				response += '  '+result_changing_octets_for_ip+'\n'
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-		if octets_for_subnet_mask[0] == '248':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
-			#return_subnet_table.print_net_use_broad()
-			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
-			for i in range(0,256,8):
-				netArr.append(i)
-				use1Arr.append(i)
-				use2Arr.append(i+7)
-				broadArr.append(i+7)
-				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+3) <= 0)):
-					subnet_network_row = row_count
-			for i in range(len(netArr)):
-				changing_octets_for_ip[0] = str(netArr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(0)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(i, ' | ', result_changing_octets_for_ip, end=' \t| ')
-				response += str(i)+' | '+result_changing_octets_for_ip+' \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use1Arr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(1)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(' ', result_changing_octets_for_ip, end=' - ')
-				response += ' '+result_changing_octets_for_ip+' - '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use2Arr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(254)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(result_changing_octets_for_ip, end='  \t| ')
-				response += result_changing_octets_for_ip+'  \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[2] = str(broadArr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(255)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print('  ', result_changing_octets_for_ip)
-				response += '  '+result_changing_octets_for_ip+'\n'
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-		if octets_for_subnet_mask[0] == '240':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
-			#return_subnet_table.print_net_use_broad()
-			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
-			for i in range(0,256,16):
-				netArr.append(i)
-				use1Arr.append(i)
-				use2Arr.append(i+15)
-				broadArr.append(i+15)
-				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+3) <= 0)):
-					subnet_network_row = row_count
-			for i in range(len(netArr)):
-				changing_octets_for_ip[0] = str(netArr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(0)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(i, ' | ', result_changing_octets_for_ip, end=' \t| ')
-				response += str(i)+' | '+result_changing_octets_for_ip+' \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use1Arr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(1)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(' ', result_changing_octets_for_ip, end=' - ')
-				response += ' '+result_changing_octets_for_ip+' - '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use2Arr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(254)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(result_changing_octets_for_ip, end='  \t| ')
-				response += result_changing_octets_for_ip+'  \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[2] = str(broadArr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(255)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print('  ', result_changing_octets_for_ip)
-				response += '  '+result_changing_octets_for_ip+'\n'
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-		if octets_for_subnet_mask[0] == '224':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
-			#return_subnet_table.print_net_use_broad()
-			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
-			for i in range(0,256,32):
-				netArr.append(i)
-				use1Arr.append(i)
-				use2Arr.append(i+31)
-				broadArr.append(i+31)
-				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+3) <= 0)):
-					subnet_network_row = row_count
-			for i in range(len(netArr)):
-				changing_octets_for_ip[0] = str(netArr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(0)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(i, ' | ', result_changing_octets_for_ip, end=' \t| ')
-				response += str(i)+' | '+result_changing_octets_for_ip+' \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use1Arr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(1)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(' ', result_changing_octets_for_ip, end=' - ')
-				response += ' '+result_changing_octets_for_ip+' - '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use2Arr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(254)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(result_changing_octets_for_ip, end='  \t| ')
-				response += result_changing_octets_for_ip+'  \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[2] = str(broadArr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(255)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print('  ', result_changing_octets_for_ip)
-				response += '  '+result_changing_octets_for_ip+'\n'
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-		if octets_for_subnet_mask[0] == '192':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
-			#return_subnet_table.print_net_use_broad()
-			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
-			for i in range(0,256,64):
-				netArr.append(i)
-				use1Arr.append(i)
-				use2Arr.append(i+63)
-				broadArr.append(i+63)
-				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+3) <= 0)):
-					subnet_network_row = row_count
-			for i in range(len(netArr)):
-				changing_octets_for_ip[0] = str(netArr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(0)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(i, ' | ', result_changing_octets_for_ip, end=' \t| ')
-				response += str(i)+' | '+result_changing_octets_for_ip+' \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use1Arr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(1)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(' ', result_changing_octets_for_ip, end=' - ')
-				response += ' '+result_changing_octets_for_ip+' - '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use2Arr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(254)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(result_changing_octets_for_ip, end='  \t| ')
-				response += result_changing_octets_for_ip+'  \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[2] = str(broadArr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(255)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print('  ', result_changing_octets_for_ip)
-				response += '  '+result_changing_octets_for_ip+'\n'
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-		if octets_for_subnet_mask[0] == '128':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
-			#return_subnet_table.print_net_use_broad()
-			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
-			for i in range(0,256,128):
-				netArr.append(i)
-				use1Arr.append(i)
-				use2Arr.append(i+127)
-				broadArr.append(i+127)
-				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+3) <= 0)):
-					subnet_network_row = row_count
-			for i in range(len(netArr)):
-				changing_octets_for_ip[0] = str(netArr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(0)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(i, ' | ', result_changing_octets_for_ip, end=' \t| ')
-				response += str(i)+' | '+result_changing_octets_for_ip+' \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use1Arr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(1)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(' ', result_changing_octets_for_ip, end=' - ')
-				response += ' '+result_changing_octets_for_ip+' - '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use2Arr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(254)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(result_changing_octets_for_ip, end='  \t| ')
-				response += result_changing_octets_for_ip+'  \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[2] = str(broadArr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(255)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print('  ', result_changing_octets_for_ip)
-				response += '  '+result_changing_octets_for_ip+'\n'
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-		if octets_for_subnet_mask[0] == '0':
-			#print('\nCannot Subnet with given CIDR/Subnet Mask\n\nReturning to Start...')
-			#return_subnet_table.ip_input()
-			#return_subnet_table.print_net_use_broad()
-			response += '\n#  | \t Network \t| \t\tUsable \t\t\t| \t Broadcast\n-----------------------------------------------------------------------------------------\n'
-			for i in range(0,256,256):
-				netArr.append(i)
-				use1Arr.append(i)
-				use2Arr.append(i+255)
-				broadArr.append(i+255)
-				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+3) <= 0)):
-					subnet_network_row = row_count
-			for i in range(len(netArr)):
-				changing_octets_for_ip[0] = str(netArr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(0)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(i, ' | ', result_changing_octets_for_ip, end=' \t| ')
-				response += str(i)+' | '+result_changing_octets_for_ip+' \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use1Arr[i])
-				changing_octets_for_ip[1] = str(0)
-				changing_octets_for_ip[2] = str(0)
-				changing_octets_for_ip[3] = str(1)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(' ', result_changing_octets_for_ip, end=' - ')
-				response += ' '+result_changing_octets_for_ip+' - '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[0] = str(use2Arr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(254)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print(result_changing_octets_for_ip, end='  \t| ')
-				response += result_changing_octets_for_ip+'  \t| '
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-				changing_octets_for_ip[2] = str(broadArr[i])
-				changing_octets_for_ip[1] = str(255)
-				changing_octets_for_ip[2] = str(255)
-				changing_octets_for_ip[3] = str(255)
-				result_changing_octets_for_ip = '.'.join(changing_octets_for_ip)
-				#print('  ', result_changing_octets_for_ip)
-				response += '  '+result_changing_octets_for_ip+'\n'
-				if i == subnet_network_row:
-					matchArr.append(result_changing_octets_for_ip)
-		
 		try:
 			#print('\n\n\n\nThe IP address you entered: "%s"    with the subnet mask of: "%s"    falls into subnet number: "%i"       which has  %s  usable addresses        and is comprised of the following ip address space:' % (entered_ip_address, entered_cidr_or_mask, subnet_network_row, usable_addresses))
 			response += '\n\n\n\n\nThe IP address you entered: "%s"    with the subnet mask of: "%s"    falls into subnet number: "%s"       which has  %s  usable addresses        and is comprised of the following ip address space:' % (entered_ip_address, entered_cidr_or_mask, str(subnet_network_row), usable_addresses)
@@ -1457,7 +971,6 @@ class return_subnet_table:
 		except:
 			#print('N\\A')
 			response += '\n\n\nN\\A'
-	
 			
 		return response
 		
