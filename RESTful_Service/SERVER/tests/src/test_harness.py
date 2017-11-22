@@ -64,7 +64,7 @@ class return_subnet_table:
 		subnet_network_row = 0
 		ip_in_incorrect_format = ''
 		row_count = -1
-		CIDRS = ['/0', '/1', '/2', '/3', '/4', '/5', '/6', '/7', '/8', '/8', '/9', '/10', '/11', '/12', '/13', '/14', '/15', '/16', '/17', '/18', '/19', '/20', '/21', '/22', '/23', '/24', '/25', '/26', '/27', '/28', '/29', '/30', '/31', '/32']
+		CIDRS = ['/0', '/1', '/2', '/3', '/4', '/5', '/6', '/7', '/8', '/9', '/10', '/11', '/12', '/13', '/14', '/15', '/16', '/17', '/18', '/19', '/20', '/21', '/22', '/23', '/24', '/25', '/26', '/27', '/28', '/29', '/30', '/31', '/32']
 		MASKS = ['0.0.0.0', '128.0.0.0', '192.0.0.0', '224.0.0.0', '240.0.0.0', '248.0.0.0', '252.0.0.0', '254.0.0.0', '255.0.0.0', '255.128.0.0', '255.192.0.0', '255.224.0.0', '255.240.0.0', '255.248.0.0', '255.252.0.0', '255.254.0.0', '255.255.0.0', '255.255.128.0', '255.255.192.0', '255.255.224.0', '255.255.240.0', '255.255.248.0', '255.255.252.0', '255.255.254.0', '255.255.255.0', '255.255.255.128', '255.255.255.192', '255.255.255.224', '255.255.255.240', '255.255.255.248', '255.255.255.252', '255.255.255.254', '255.255.255.255']
 		USABLES = [str((2**(32-0))-2), str((2**(32-1))-2), str((2**(32-2))-2), str((2**(32-3))-2), str((2**(32-4))-2), str((2**(32-5))-2), str((2**(32-6))-2), str((2**(32-7))-2), str((2**(32-8))-2), str((2**(32-9))-2), str((2**(32-10))-2), str((2**(32-11))-2), str((2**(32-12))-2), str((2**(32-13))-2), str((2**(32-14))-2), str((2**(32-15))-2), str((2**(32-16))-2), str((2**(32-17))-2), str((2**(32-18))-2), str((2**(32-19))-2), str((2**(32-20))-2), str((2**(32-21))-2), str((2**(32-22))-2), str((2**(32-23))-2), str((2**(32-24))-2), str((2**(32-25))-2), str((2**(32-26))-2), str((2**(32-27))-2), str((2**(32-28))-2), str((2**(32-29))-2), str((2**(32-30))-2), str((2**(32-31))-2), str((2**(32-32))-2)]
 		#entered_ip_address = input('What IP address would you like to subnet?')
@@ -100,9 +100,6 @@ class return_subnet_table:
 			return response
 			#return_subnet_table.ip_input()
 		if octets_for_subnet_mask[0] == '255':
-			#print('Error. Invalid Input\n\nReturning to Start...')
-			response = 'Error. Invalid Input...'
-			#return_subnet_table.ip_input()
 			if octets_for_subnet_mask[1] == '255':
 				if octets_for_subnet_mask[2] == '255':
 					if octets_for_subnet_mask[3] == '254' or int(octets_for_subnet_mask[3]) > 254:
@@ -1624,8 +1621,8 @@ def deobfuscate_powershell_base64(test_string):
 #The @ denotes a Python decorator
 #Decorators modify functions immediately following them 
 #Using Python's Flask library, the decorator along with the function definition make a single code block -- if not together an error will occur
-@app.route('/ip_subnet/<string:ip>/', methods=['POST'], defaults={"subnet_mask":"8"})
 @app.route('/ip_subnet/<string:ip>', methods=['POST'], defaults={"subnet_mask":"8"})
+@app.route('/ip_subnet/<string:ip>/', methods=['POST'], defaults={"subnet_mask":"8"})
 @app.route('/ip_subnet/<string:ip>/<path:subnet_mask>/', methods=['POST'])
 @app.route('/ip_subnet/<string:ip>/<path:subnet_mask>', methods=['POST'])
 def return_subnetted_ip(ip,subnet_mask):
