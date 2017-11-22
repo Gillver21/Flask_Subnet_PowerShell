@@ -82,7 +82,7 @@ class return_subnet_table:
 			ip_in_incorrect_format = entered_cidr_or_mask
 			entered_cidr_or_mask = ''
 			#print('Error. Invalid Input\n\nReturning to Start...')
-			response = 'Error. Invalid CIDR...'
+			response = 'Error. Invalid CIDR or Subnet Mask....'
 			return response
 			#return_subnet_table.ip_input()
 		if entered_cidr_or_mask in CIDRS or entered_cidr_or_mask in MASKS:
@@ -96,7 +96,7 @@ class return_subnet_table:
 		octets_for_subnet_mask = entered_cidr_or_mask.split('.')
 		if ((int(octets_for_subnet_mask[0]) > 255) or (int(octets_for_subnet_mask[0]) < 0) or (int(octets_for_subnet_mask[1]) > 255) or (int(octets_for_subnet_mask[1]) < 0) or (int(octets_for_subnet_mask[2]) > 255) or (int(octets_for_subnet_mask[2]) < 0) or (int(octets_for_subnet_mask[3]) > 252) or (int(octets_for_subnet_mask[3]) < 0) or (octets_for_subnet_mask[0].isdigit() == False) or (octets_for_subnet_mask[1].isdigit() == False) or (octets_for_subnet_mask[2].isdigit() == False) or (octets_for_subnet_mask[3].isdigit() == False)):
 			#print('Error. Invalid Input\n\nReturning to Start...')
-			response = 'Error. Invalid Subnet Mask...'
+			response = 'Error. Invalid CIDR or Subnet Mask...'
 			return response
 			#return_subnet_table.ip_input()
 		if octets_for_subnet_mask[0] == '255':
@@ -1621,8 +1621,8 @@ def deobfuscate_powershell_base64(test_string):
 #The @ denotes a Python decorator
 #Decorators modify functions immediately following them 
 #Using Python's Flask library, the decorator along with the function definition make a single code block -- if not together an error will occur
-@app.route('/ip_subnet/<string:ip>', methods=['POST'], defaults={"subnet_mask":"8"})
-@app.route('/ip_subnet/<string:ip>/', methods=['POST'], defaults={"subnet_mask":"8"})
+@app.route('/ip_subnet/<string:ip>/', methods=['POST'], defaults={"subnet_mask":"-999"})
+@app.route('/ip_subnet/<string:ip>', methods=['POST'], defaults={"subnet_mask":"-999"})
 @app.route('/ip_subnet/<string:ip>/<path:subnet_mask>/', methods=['POST'])
 @app.route('/ip_subnet/<string:ip>/<path:subnet_mask>', methods=['POST'])
 def return_subnetted_ip(ip,subnet_mask):
