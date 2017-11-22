@@ -1039,7 +1039,7 @@ class return_subnet_table:
 				use2Arr.append(i+1)
 				broadArr.append(i+1)
 				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+1) <= 0)):
+				if (((int(octets_for_entered_ip[0])) - i >= 0)  and ((int(octets_for_entered_ip[0])) - (i+1) <= 0)):
 					subnet_network_row = row_count
 			for i in range(len(netArr)):
 				changing_octets_for_ip[0] = str(netArr[i])
@@ -1087,7 +1087,7 @@ class return_subnet_table:
 				use2Arr.append(i+3)
 				broadArr.append(i+3)
 				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+3) <= 0)):
+				if (((int(octets_for_entered_ip[0])) - i >= 0)  and ((int(octets_for_entered_ip[0])) - (i+3) <= 0)):
 					subnet_network_row = row_count
 			for i in range(len(netArr)):
 				changing_octets_for_ip[0] = str(netArr[i])
@@ -1135,7 +1135,7 @@ class return_subnet_table:
 				use2Arr.append(i+7)
 				broadArr.append(i+7)
 				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+7) <= 0)):
+				if (((int(octets_for_entered_ip[0])) - i >= 0)  and ((int(octets_for_entered_ip[0])) - (i+7) <= 0)):
 					subnet_network_row = row_count
 			for i in range(len(netArr)):
 				changing_octets_for_ip[0] = str(netArr[i])
@@ -1183,7 +1183,7 @@ class return_subnet_table:
 				use2Arr.append(i+15)
 				broadArr.append(i+15)
 				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+15) <= 0)):
+				if (((int(octets_for_entered_ip[0])) - i >= 0)  and ((int(octets_for_entered_ip[0])) - (i+15) <= 0)):
 					subnet_network_row = row_count
 			for i in range(len(netArr)):
 				changing_octets_for_ip[0] = str(netArr[i])
@@ -1231,7 +1231,7 @@ class return_subnet_table:
 				use2Arr.append(i+31)
 				broadArr.append(i+31)
 				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+31) <= 0)):
+				if (((int(octets_for_entered_ip[0])) - i >= 0)  and ((int(octets_for_entered_ip[0])) - (i+31) <= 0)):
 					subnet_network_row = row_count
 			for i in range(len(netArr)):
 				changing_octets_for_ip[0] = str(netArr[i])
@@ -1279,7 +1279,7 @@ class return_subnet_table:
 				use2Arr.append(i+63)
 				broadArr.append(i+63)
 				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+63) <= 0)):
+				if (((int(octets_for_entered_ip[0])) - i >= 0)  and ((int(octets_for_entered_ip[0])) - (i+63) <= 0)):
 					subnet_network_row = row_count
 			for i in range(len(netArr)):
 				changing_octets_for_ip[0] = str(netArr[i])
@@ -1327,7 +1327,7 @@ class return_subnet_table:
 				use2Arr.append(i+127)
 				broadArr.append(i+127)
 				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+127) <= 0)):
+				if (((int(octets_for_entered_ip[0])) - i >= 0)  and ((int(octets_for_entered_ip[0])) - (i+127) <= 0)):
 					subnet_network_row = row_count
 			for i in range(len(netArr)):
 				changing_octets_for_ip[0] = str(netArr[i])
@@ -1375,7 +1375,7 @@ class return_subnet_table:
 				use2Arr.append(i+255)
 				broadArr.append(i+255)
 				row_count += 1
-				if (((int(octets_for_entered_ip[2])) - i >= 0)  and ((int(octets_for_entered_ip[2])) - (i+255) <= 0)):
+				if (((int(octets_for_entered_ip[0])) - i >= 0)  and ((int(octets_for_entered_ip[0])) - (i+255) <= 0)):
 					subnet_network_row = row_count
 			for i in range(len(netArr)):
 				changing_octets_for_ip[0] = str(netArr[i])
